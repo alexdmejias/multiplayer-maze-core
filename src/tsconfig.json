@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "../dist/",
+    "removeComments": false,
+    "declaration": true,
+    "strictNullChecks": false
+  },
+  "exclude": [
+    "../tests"
+  ]
+}

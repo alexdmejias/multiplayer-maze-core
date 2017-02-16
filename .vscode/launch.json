@@ -1,0 +1,73 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch CLI",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/dist/cli.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "*-module"
+      },
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnFirstSessionStart",
+      "preLaunchTask": "build",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceRoot}/dist/**/*.js"
+      ]
+    },
+    {
+      "name": "Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/dist/app.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": null,
+      "preLaunchTask": "build",
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "*-module"
+      },
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceRoot}/dist/**/*.js"
+      ]
+    },
+    {
+      "name": "Server - External",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/dist/app.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "*-module"
+      },
+      "externalConsole": true,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/dist"
+    }
+  ]
+}
