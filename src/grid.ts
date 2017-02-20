@@ -59,7 +59,7 @@ class Grid implements IGrid {
       gridConnections.push(rowConnections);
     });
 
-    if (algorithm) {
+    if (algorithm && Algos.hasOwnProperty(algorithm)) {
       gridConnections = Algos[algorithm](this, 10);
     }
 

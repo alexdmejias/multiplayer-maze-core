@@ -1,7 +1,6 @@
 import Binary from './binary';
+import {IGrid} from '../_interfaces';
 
-const algos = {
-  'Binary': Binary.bind(this)
-};
-
-export default algos;
+export default {
+  Binary
+}
