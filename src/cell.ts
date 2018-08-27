@@ -1,11 +1,11 @@
-import {ICell} from './_interfaces';
+import {ICell, ICellNeighbors} from './_interfaces';
 
 class Cell implements ICell {
   row: number;
   column: number;
   id: string;
   distance: number;
-  neighbors: {[k:string]: ICell} = {};
+  neighbors: ICellNeighbors = {};
 
   links = {};
   constructor (rowArg: number, columnArg: number) {
@@ -13,6 +13,7 @@ class Cell implements ICell {
     this.column = columnArg;
 
     this.id = `${this.row}-${this.column}`;
+    this.links = {}
   }
 
   // instead of creating a setter for each direction
@@ -35,13 +36,41 @@ class Cell implements ICell {
     return list;
   }
 
-  setLink (cell, bidirectional = true) {
-    this.links[cell.id] = cell;
+//   setLink (cell, bidirectional = true): ICell {
+//     this.links[cell.id] = cell;
+
+//     if (bidirectional) {
+//       cell.links[this.id] = this;
+//     }
+//     return this;
+//   }
+
+  setLink (cell, bidirectional = true): ICell {
+    this.links[cell.id] = cell.id;
 
     if (bidirectional) {
-      cell.links[this.id] = this;
+      cell.links[this.id] = this.id;
     }
     return this;
+  }
+
+  asJSON(): object {
+      const test = (obj) => {
+          const k =  this.getAllNeighbors()
+          console.log('nei', JSON.stringify(k))
+          return k.reduce((p, curr) => {
+              console.log('0000', curr)
+              return p.concat(this.getNeighbors(curr).id)
+          }, [])
+      }
+
+      const props = {
+          id: this.id,
+          links: Object.keys(this.links),
+          neighbors: test(this.neighbors)
+      };
+
+      return props;
   }
 
   delLink (cell, bidirectional = true) {

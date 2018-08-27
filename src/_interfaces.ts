@@ -7,14 +7,14 @@ export interface IGrid {
 }
 
 export interface ICellNeighbors {
-  north: ICell,
-  south: ICell;
-  east: ICell;
-  west: ICell;
+  north?: ICell,
+  south?: ICell;
+  east?: ICell;
+  west?: ICell;
 }
 
 export interface ICell {
-  neighbors: any;
+  neighbors: ICellNeighbors;
   neighborsId?: number;
   column: number;
   row: number;
@@ -24,6 +24,7 @@ export interface ICell {
   links: any;
   position?: {top: number, left: number};
   setLink (link: ICell);
+  asJSON (): object;
   getLink (id: string): ICell;
   delLink (cell: ICell, bidirectional: boolean);
   getLinksIds (): string[];

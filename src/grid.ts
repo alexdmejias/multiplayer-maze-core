@@ -84,6 +84,21 @@ class Grid implements IGrid {
     }, '');
   }
 
+  wasd (): number[][] {
+    const a = [];
+    for (let index = 0; index < this.grid.length; index++) {
+        const row = this.grid[index];
+        const b = [];
+        for (let h = 0; h < row.length; h++) {
+            const col = row[h];
+            b.push(col.asJSON())
+        }
+        a.push(b)
+    }
+
+    return a
+  }
+
   randomCell (): ICell {
     const row = Math.floor(Math.random() * this.rows);
     const column = Math.floor(Math.random() * this.columns);
